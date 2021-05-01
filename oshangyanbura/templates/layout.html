@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %} - Oshangyanbura</title>
+    {% endblock %}
+  </head>
+  <body>
+    <main id="content">{% block content %}{% endblock %}</main>
+    <footer id="footer">
+      {% block footer %}
+      &copy; Copyright 2021 by <a href="https://eaneto.dev/">Edison Aguiar</a>.
+      {% endblock %}
+    </footer >
+  </body>
+</html>

@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  database:
+    container_name: database
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+      POSTGRES_DB: oshangyanbura
+    ports:
+      - 5432:5432
+    networks:
+      - postgres-network
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user@user.com"
+      PGADMIN_DEFAULT_PASSWORD: "user"
+    ports:
+      - 16543:80
+    depends_on:
+      - database
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge
