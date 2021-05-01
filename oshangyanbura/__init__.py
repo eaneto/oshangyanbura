@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from werkzeug.exceptions import NotFound
 
 app = Flask(__name__)
 
@@ -20,6 +21,12 @@ def signup():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.errorhandler(NotFound)
+def handle_not_found(e):
+    return render_template("notfound.html"), 404
+
 
 if __name__ == "__main__":
     app.run()
