@@ -2,6 +2,10 @@ body {
     background-color: #f0f0f0;
 }
 
+main {
+    padding-top: 20px;
+}
+
 img {
     max-width: 100%;
 }
