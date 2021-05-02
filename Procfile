@@ -1,1 +1,1 @@
-web: "gunicorn oshangyanbura:create_app()"
+web: gunicorn "oshangyanbura:create_app()"
