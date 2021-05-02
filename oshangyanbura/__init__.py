@@ -1,32 +1,20 @@
-from flask import Flask, render_template
-from werkzeug.exceptions import NotFound
+import os
 
-app = Flask(__name__)
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+db = SQLAlchemy()
 
+def create_app():
+    app = Flask(__name__)
+    app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "default-secret-key")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ['DATABASE_URL']
+    db.init_app(app)
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
+    from .main import main_bp
+    app.register_blueprint(main_bp)
 
+    from .auth import auth_bp
+    app.register_blueprint(auth_bp)
 
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
-
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-
-@app.errorhandler(NotFound)
-def handle_not_found(e):
-    return render_template("notfound.html"), 404
-
-
-if __name__ == "__main__":
-    app.run()
+    return app
