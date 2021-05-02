@@ -30,6 +30,6 @@ def signup():
                  password = hashed_password)
         db.session.add(customer)
         db.session.commit()
-        log.info("Customer registered succesfulyy")
+        log.info("Customer registered successfully")
         return redirect(url_for("main.index"))
     return render_template("auth/signup.html", form=form)
