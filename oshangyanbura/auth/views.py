@@ -1,7 +1,8 @@
 from flask import render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required
-from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.exc import IntegrityError
 from structlog import get_logger
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from .forms import LoginForm, SignupForm
 from . import auth_bp as auth
@@ -49,8 +50,13 @@ def signup():
                  email = form.email.data,
                  password = hashed_password)
         db.session.add(customer)
-        # TODO deal with constraint violation.
-        db.session.commit()
-        log.info("Customer registered successfully")
-        return redirect(url_for("main.index"))
+        try:
+            db.session.commit()
+            log.info("Customer registered successfully")
+            return redirect(url_for("main.index"))
+        except IntegrityError:
+            db.session.rollback()
+            flash("Email already registered.")
+            return redirect(url_for("auth.signup"))
+
     return render_template("auth/signup.html", form=form)
