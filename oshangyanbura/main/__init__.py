@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 
 from werkzeug.exceptions import NotFound
@@ -12,8 +12,9 @@ def index():
 
 
 @main_bp.route("/home")
-@login_required
 def home():
+    if not current_user.is_authenticated:
+        return redirect(url_for("main.index"))
     return render_template("home.html", customer_name=current_user.name)
 
 
