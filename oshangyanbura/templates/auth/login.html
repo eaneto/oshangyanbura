@@ -6,15 +6,29 @@
 <div class="row">
   <div class="offset-md-3 col-md-6 offset-lg-3 col-lg-6">
     <h3>Log in</h3>
+    {% if form.email.errors %}
+      {% for error in form.email.errors %}
+      <div class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+      {% endfor %}
+    {% endif %}
     <form method="post">
       {{ form.csrf_token }}
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-danger" role="alert">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+      {% endwith %}
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email">
+        <input type="email" class="form-control" name="email" id="email">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
+        <input type="password" class="form-control" name="password" id="password">
       </div>
       <button type="submit" class="btn btn-primary">Log In</button>
     </form>

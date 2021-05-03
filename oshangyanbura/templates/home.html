@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<b>Hello {{ customer_name }}</b>
+
+<img src="{{url_for('static', filename='wave.jpg')}}">
+{% endblock %}
