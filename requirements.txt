@@ -1,5 +1,5 @@
 alembic==1.6.2
-click==7.1.2
+click==8.0.1
 dnspython==2.1.0
 email-validator==1.1.2
 Flask==2.0.0
