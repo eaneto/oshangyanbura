@@ -46,6 +46,7 @@ def signup():
     if form.validate_on_submit():
         log.info("Registering customer")
         hashed_password = generate_password_hash(form.password.data)
+        # TODO encrypt email
         customer = Customer(name = form.name.data,
                  email = form.email.data,
                  password = hashed_password)
