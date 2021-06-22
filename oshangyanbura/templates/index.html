@@ -3,25 +3,79 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ url_for('static', filename='wave.jpg') }}" class="d-block w-100" alt="Big wave">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ url_for('static', filename='wave.jpg') }}" class="d-block w-100" alt="Big wave">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ url_for('static', filename='wave.jpg') }}" class="d-block w-100" alt="Big wave">
+<div class="row justify-content-evenly">
+  <h2 class="text-center">Championship Tour</h2>
+  <div class="col-3">
+    <h3 class="text-center">Men's</h3>
+    <div id="mensCarouselEvents" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card">
+            <img src="https://d3qf8nvav5av0u.cloudfront.net/image/963540e78fcba88fefaefa45eb0b352f.png">
+            <div class="card-body">
+              <h5 class="card-title">Gabriel Medina</h5>
+              <p class="card-text">10000 pts</p>
+              <a href="#" class="btn btn-primary">Place a bet</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+            <img src="https://d3qf8nvav5av0u.cloudfront.net/image/eb6081adcc5ae06fb2f46a64654c19e3.png">
+            <div class="card-body">
+              <h5 class="card-title">Italo Ferreira</h5>
+              <p class="card-text">9000 pts</p>
+              <a href="#" class="btn btn-primary">Place a bet</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mensCarouselEvents" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mensCarouselEvents" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvents" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselEvents" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+
+  <div class="col-3">
+    <h3 class="text-center">Womens's</h3>
+    <div id="womensCarouselEvents" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card">
+            <img src="https://d3qf8nvav5av0u.cloudfront.net/image/c45bce3fa194ed359b80f775823ab8e5.png">
+            <div class="card-body">
+              <h5 class="card-title">Tatiana Weston-Webb</h5>
+              <p class="card-text">10000 pts</p>
+              <a href="#" class="btn btn-primary">Place a bet</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+            <img src="https://d3qf8nvav5av0u.cloudfront.net/image/133090c676ca5bc949bacd73345920b6.png">
+            <div class="card-body">
+              <h5 class="card-title">Carissa Moore</h5>
+              <p class="card-text">9000 pts</p>
+              <a href="#" class="btn btn-primary">Place a bet</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#womensCarouselEvents" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#womensCarouselEvents" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 </div>
+
 {% endblock %}
