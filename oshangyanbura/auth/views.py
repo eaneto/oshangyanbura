@@ -11,6 +11,8 @@ from .. import db, login_manager
 
 log = get_logger()
 
+# TODO admin pages to execute scripts.
+
 @login_manager.user_loader
 def load_user(customer_id):
     return Customer.query.get(int(customer_id))
@@ -52,6 +54,7 @@ def signup():
                  password = hashed_password)
         db.session.add(customer)
         try:
+            # TODO Send confirmation email
             db.session.commit()
             log.info("Customer registered successfully")
             return redirect(url_for("main.index"))
