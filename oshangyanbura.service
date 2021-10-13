@@ -1,0 +1,21 @@
+[Unit]
+Description=Oshangyanbura (Gunicorn) daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+Type=notify
+User=oshangyanbura
+Group=applications
+RuntimeDirectory=gunicorn
+WorkingDirectory=/home/oshangyanbura/oshangyanbura
+ExecStart=/usr/bin/gunicorn "oshangyanbura:create_app()"
+ExecStop=/bin/kill -s HUP $MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
+
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
